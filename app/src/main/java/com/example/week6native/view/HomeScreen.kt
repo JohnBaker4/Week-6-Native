@@ -17,7 +17,6 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import com.example.week6native.model.Task
 
 
 
@@ -49,35 +48,22 @@ fun HomeScreen(
             TopAppBar(
                 title = { Text("Todo List") },
                 actions = {
-                    IconButton(onClick = onNavigateCalendar) {
-                        Icon(
-                            imageVector = Icons.Default.CalendarMonth,
-                            contentDescription = "Go to calendar"
-                        )
+                    IconButton(onClick = onNavigateCalendar ) {
+                        Icon(Icons.Default.CalendarMonth, contentDescription = "Go to calendar")
                     }
-                    IconButton(onClick = onNavigateSettings) {
-                        Icon(
-                            imageVector = Icons.Default.Settings,
-                            contentDescription = "Go to settings"
-                        )
+
+                    IconButton(onClick = onNavigateSettings ) {
+                        Icon(Icons.Default.Settings, contentDescription = "Go to settings")
                     }
                 }
             )
 
             Row {
                 Button(
-                    onClick = onAddClick, // Nyt käytetään callbackia
+                    onClick = onAddClick,
                     modifier = Modifier.padding(8.dp),
                 ) {
                     Text("Add Task")
-                }
-
-                // Tämä "Active" nappi tekee nyt saman kuin Add Task – en jaksanut muuttaa
-                Button(
-                    onClick = { /* esim. filtteri aktiivisille taskeille */ },
-                    modifier = Modifier.padding(8.dp),
-                ) {
-                    Text("Active")
                 }
             }
 

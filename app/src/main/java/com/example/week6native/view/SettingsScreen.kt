@@ -1,10 +1,13 @@
 package com.example.week6native.view
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -18,6 +21,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.week6native.navigation.ROUTE_CALENDAR
+import com.example.week6native.navigation.ROUTE_HOME
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -41,6 +46,11 @@ fun SettingsScreen(
                 navigationIcon = {
                     IconButton(onClick = onNavigateHome) {
                         Icon(Icons.Filled.List, contentDescription = "Go to list")
+                    }
+                },
+                actions = {
+                    IconButton(onClick = onNavigateCalendar) {
+                        Icon(Icons.Default.CalendarMonth, contentDescription = "Go to calendar")
                     }
                 }
             )
@@ -68,3 +78,5 @@ fun SettingsScreen(
         }
     }
 }
+
+private fun ColumnScope.popUpTo(routeHome: String, function: () -> Unit) {}

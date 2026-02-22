@@ -19,9 +19,9 @@ import com.example.week6native.viewmodel.TaskViewModel
 fun AddDialog(
     onClose: () -> Unit,
     onUpdate: (Task) -> Unit) {
-    var title by remember { mutableStateOf("title") }
-    var description by remember { mutableStateOf("description") }
-    var dueDate by remember { mutableStateOf("dueDate") }
+    var title by remember { mutableStateOf("") }
+    var description by remember { mutableStateOf("") }
+    var dueDate by remember { mutableStateOf("") }
 
 
     AlertDialog(

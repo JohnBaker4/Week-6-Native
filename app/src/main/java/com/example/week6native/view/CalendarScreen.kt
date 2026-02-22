@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
@@ -30,6 +31,7 @@ import com.example.week6native.model.Task
 fun CalendarScreen(
     viewModel: TaskViewModel,
     onTaskClick: (Int) -> Unit = {},
+    onNavigateSettings: () -> Unit = {},
     onNavigateHome: () -> Unit
 ) {
     val tasks by viewModel.tasks.collectAsState()
@@ -51,6 +53,14 @@ fun CalendarScreen(
                 navigationIcon = {
                     IconButton(onClick = onNavigateHome) {
                         Icon(Icons.Filled.List, contentDescription = "Go to list")
+                    }
+                },
+                actions = {
+                    IconButton(onClick = onNavigateSettings) {
+                        Icon(
+                            imageVector = Icons.Default.Settings,
+                            contentDescription = "Go to settings"
+                        )
                     }
                 }
             )

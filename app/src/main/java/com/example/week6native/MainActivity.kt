@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.lifecycleScope
 import com.example.week6native.navigation.ROUTE_CALENDAR
 import com.example.week6native.navigation.ROUTE_HOME
 import com.example.week6native.navigation.ROUTE_SETTINGS
@@ -23,7 +25,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.room.Room
 import com.example.week6native.data.local.AppDatabase
 import com.example.week6native.data.repository.TaskRepository
+import com.example.week6native.ui.theme.ThemePreferences
 import com.example.week6native.viewmodel.TaskViewModelFactory
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +50,9 @@ class MainActivity : ComponentActivity() {
                 factory = TaskViewModelFactory(repository)
             )
 
-            // Mahdollista laittaa tumma tila päälle jos valkoinen on palavaa magnesiumia
-            var isDarkTheme by remember { mutableStateOf(false) }
+            // Mahdollista laittaa tumma tila päälle jos valkoinen on palavaa magnesiumia, sovelluksen pitäisi muistaa
+            val themePreferences = ThemePreferences(this)
+            val isDarkTheme by themePreferences.isDarkMode.collectAsState(initial = false)
 
             // Teema lähinnä vaikuttaa tuohon tummaan tilaan
             Week6NativeTheme(darkTheme = isDarkTheme) {
@@ -67,12 +72,8 @@ class MainActivity : ComponentActivity() {
                             onAddClick = {
                                 viewModel.addTaskDialogVisible.value = true
                             },
-                            onNavigateCalendar = {
-                                navController.navigate(ROUTE_CALENDAR)
-                            },
-                            onNavigateSettings = {
-                                navController.navigate(ROUTE_SETTINGS)
-                            }
+                            onNavigateCalendar = { navController.navigate(ROUTE_CALENDAR) },
+                            onNavigateSettings = { navController.navigate(ROUTE_SETTINGS) }
                         )
                     }
 
@@ -83,9 +84,8 @@ class MainActivity : ComponentActivity() {
                             onTaskClick = { id ->
                                 viewModel.openTask(id)
                             },
-                            onNavigateHome = {
-                                navController.popBackStack()
-                            },
+                            onNavigateHome = { navController.navigate(ROUTE_HOME) { launchSingleTop = true } },
+                            onNavigateSettings = { navController.navigate(ROUTE_SETTINGS) { launchSingleTop = true } }
                         )
                     }
 
@@ -94,14 +94,12 @@ class MainActivity : ComponentActivity() {
                         SettingsScreen(
                             isDarkTheme = isDarkTheme,
                             onToggleTheme = {
-                                isDarkTheme = !isDarkTheme
+                                lifecycleScope.launch {
+                                    themePreferences.setDarkMode(!isDarkTheme)
+                                }
                             },
-                            onNavigateHome = {
-                                navController.popBackStack()
-                            },
-                            onNavigateCalendar = {
-                                navController.navigate(ROUTE_CALENDAR)
-                            }
+                            onNavigateHome = { navController.navigate(ROUTE_HOME) { launchSingleTop = true } },
+                            onNavigateCalendar = { navController.navigate(ROUTE_CALENDAR) { launchSingleTop = true } }
                         )
                     }
                 }
