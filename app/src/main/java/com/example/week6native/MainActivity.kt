@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
                 factory = TaskViewModelFactory(repository)
             )
 
-            // Mahdollista laittaa tumma tila päälle jos valkoinen on palavaa magnesiumia, sovelluksen pitäisi muistaa
+            // Mahdollista laittaa tumma tila päälle jos valkoinen on palavaa magnesiumia
             val themePreferences = ThemePreferences(this)
             val isDarkTheme by themePreferences.isDarkMode.collectAsState(initial = false)
 
@@ -89,7 +89,7 @@ class MainActivity : ComponentActivity() {
                         )
                     }
 
-                    // Route asetuksille ja asetus tummalle tilalle
+                    // Route asetuksille ja asetus tummalle tilalle, sovellus muistaa nyt tumman tilan
                     composable(ROUTE_SETTINGS) {
                         SettingsScreen(
                             isDarkTheme = isDarkTheme,

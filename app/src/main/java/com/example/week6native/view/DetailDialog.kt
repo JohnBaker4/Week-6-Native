@@ -10,7 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.example.week6native.model.Task
+import com.example.week6native.data.model.Task
 
 @Composable
 fun DetailDialog(task: Task, onClose: () -> Unit, onUpdate: (Task) -> Unit) {

@@ -1,10 +1,9 @@
 package com.example.week6native.data.repository
 
 import com.example.week6native.data.local.TaskDao
-import com.example.week6native.model.Task
-import com.example.week6native.model.TaskEntity
-import com.example.week6native.model.toDomain
-import com.example.week6native.model.toEntity
+import com.example.week6native.data.model.Task
+import com.example.week6native.data.model.toDomain
+import com.example.week6native.data.model.toEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

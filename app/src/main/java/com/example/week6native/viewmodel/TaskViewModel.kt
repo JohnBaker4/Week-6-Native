@@ -3,8 +3,7 @@ package com.example.week6native.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.week6native.data.repository.TaskRepository
-import com.example.week6native.model.Task
-import com.example.week6native.model.mockTasks
+import com.example.week6native.data.model.Task
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
