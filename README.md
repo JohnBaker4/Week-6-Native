@@ -24,22 +24,34 @@ Jetpack Compose -näytöt kuuntelevat ViewModelin tilaa ja päivittyvät automaa
 
 ## Projektin rakenne
 /data/model/Task.kt
+
 /data/model/TaskEntity.kt
 
+
 /data/local/TaskDao.kt
+
 /data/local/AppDatabase.kt
+
 
 /data/repository/TaskRepository.kt
 
+
 /navigation/Routes.kt
 
+
 /view/AddDialog.kt
+
 /view/CalendarScreen.kt
+
 /view/DetailDialog.kt
+
 /view/HomeScreen.kt
+
 /view/SettingsScreen.kt
 
+
 /viewmodel/TaskViewModel.kt
+
 /viewmodel/TaskViewModelFactory.kt
 
 /MainActivity.kt
