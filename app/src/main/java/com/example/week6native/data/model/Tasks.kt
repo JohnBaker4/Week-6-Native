@@ -1,4 +1,4 @@
-package com.example.week6native.model
+package com.example.week6native.data.model
 
 data class Task(
     val id: Int,

@@ -1,4 +1,4 @@
-package com.example.week6native.model
+package com.example.week6native.data.model
 
 val mockTasks = listOf(
     Task(1, "Buy groceries", "Milk and bread", 1, "2026-01-20", false),

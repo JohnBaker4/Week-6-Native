@@ -2,7 +2,7 @@ package com.example.week6native.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.week6native.model.TaskEntity
+import com.example.week6native.data.model.TaskEntity
 
 @Database(
     entities = [TaskEntity::class],

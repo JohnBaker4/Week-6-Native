@@ -1,7 +1,7 @@
 package com.example.week6native.data.local
 
 import androidx.room.*
-import com.example.week6native.model.TaskEntity
+import com.example.week6native.data.model.TaskEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
